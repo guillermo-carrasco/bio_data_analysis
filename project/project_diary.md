@@ -1,5 +1,10 @@
 # Project diary
 
+### 2015-03-08
+
+Jobs were canceled due to time limit... have to re-run them with a higher time
+limit. Re-queued them.
+
 ### 2015-03-07
 
 In order to solve the space problems **and** the privacy problems, Phil gave us access
