@@ -2,7 +2,52 @@
 
 ### 2015-03-12
 
+SMARTAR miRNA pipeline workflow:
 
+1. **Define static files and code locations**: Defines where the reference fasta
+files are, the indexes, annotation files, source codes for generating plots, etc.
+_Important to note_ that all the paths are relative to the pipeline main script,
+so this structure is strict:
+
+    ```
+    (master)guilc@milou-b:/proj/b2013064/nobackup/BB2490_KTH_miRNA_project/smartar$ tree -L 1
+    .
+    ├── EXOGEN
+    ├── human_data
+    ├── mouse_data
+    ├── SMARTAR_mouse
+    ├── SMARTAR_mouse_v1.0.9.pl
+    ├── SMARTAR_nematode
+    ├── SMARTAR_source
+    ├── SMARTAR_static
+    ├── SMARTAR_v1.0.9.pl
+    ```
+
+2. **Define names and variables:** For use in future references, like for example
+the TrueSeq small RNA Illumina adapter sequence `TGGAATTCTCGGGTGCCAAGG`
+
+3. **Parse configuration:** Creates `progress` directories and checks the tabular
+configuration file.
+
+4. **Preprocess data:** [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/)
+
+    * converts Sanger phred encoding to illumina encoding for use with the fastx suite
+    * truncates the reads down to length 36 nts --> **uses:** `fastx_trimmer -f 1 -l 36`
+    * removes reads which consists only of homo-nts (will still be filtered if three
+    or less nts are different from the homo-nts) --> **uses:** `fastx_artifacts_filter`
+    * remove reads where more than 50% of the nts have less than 10 phred quality.
+    **uses:** `fastq_quality_filter -q 10 -p 50`
+    * removes adapters with adrec (8 nt prefix, max 1 mismatch, some low-complexity filtering).
+    **uses:** `AdRec.jar` _Not really sure what this is, haven't found information_
+    * parses the tabular output format of adrec to mirdeep2 fasta format. **uses:** `adrec_to_fasta.pl`
+    * discards reads shorter than 18 nts and maps the remaining against the genome for use for mirdeep2.
+    **uses:** a custom script called `mapper.pl`
+    * merges all resulting FASTA files.
+
+5. **Control quality:** _This is the one we are most interested in_
+
+    It uses two binaries called `fastx_quality_stats` and `fastq_quality_boxplot_graph.sh` that I don't
+    really know what they are.
 
 ### 2015-03-09
 
