@@ -4,6 +4,8 @@
 
 SMARTAR miRNA pipeline workflow:
 
+(You can skip any of the pipeline steps by using the command line options available)
+
 1. **Define static files and code locations**: Defines where the reference fasta
 files are, the indexes, annotation files, source codes for generating plots, etc.
 _Important to note_ that all the paths are relative to the pipeline main script,
@@ -48,6 +50,37 @@ configuration file.
 
     It uses two binaries called `fastx_quality_stats` and `fastq_quality_boxplot_graph.sh` that I don't
     really know what they are.
+
+6. **Control contamination:** Uses the perl script `contamination_v4.pl`, wich detects clade-specific miRNAs.
+Creates figures and tables for each FASTA file.
+
+7. **Plot lengths:** Will plot length distributions.
+
+8. **Queries [miRDeep2](https://www.mdc-berlin.de/8551903/en/)**: miRDeep2 is a
+completely overhauled tool which discovers microRNA genes by analyzing sequenced RNAs.
+The tool reports known and hundreds of novel microRNAs with high accuracy in seven
+species representing the major animal clades.
+
+9. **Queries miRBase:** Using [SeqBuster](https://github.com/lpantano/seqbuster)
+
+10. **Generate opt files:** _Don't know what this is..._
+
+11. **Map to genome:** Aligns the reads to the reference Genome using Bowtie (1)
+
+12. **Calculate intensities:** Uses custom perls scripts, _not sure what it does_...
+
+13. **Break down annotation, annotation basic and annotation detailed**: _don't
+know what this is..._
+
+14. **Construct table:** Constructs annotation tables.
+
+15. **Make bed Graphs**
+
+16. **Run SeqCluster:** Not much information about this...
+
+17. **Exogen diagnose:** Running a custom stript as well..
+
+18. Finall summary
 
 ### 2015-03-09
 
