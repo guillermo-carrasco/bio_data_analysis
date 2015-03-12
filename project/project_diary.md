@@ -1,5 +1,13 @@
 # Project diary
 
+### 2015-03-12
+
+
+
+### 2015-03-09
+
+Details about the poster session next week in the course literature.
+
 ### 2015-03-08
 
 Jobs were canceled due to time limit... have to re-run them with a higher time
