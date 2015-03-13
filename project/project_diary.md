@@ -1,5 +1,51 @@
 # Project diary
 
+### 2015-03-13
+
+Checking the pipeline logs we've seen lots of errors, the first one of them is a
+conflict loading bowtie 0.12.6. I don't thin that this is a problem, as this is due to
+the pipeline loading previously bowtie 1.1.0.
+
+**Pre-processing data and controlling quality** do not raise any error.
+
+**controlling contaminants**
+
+Lots of errors in the reports generation: `Error in library(plotrix) : there is no package called ‘plotrix’`
+
+I have installed the R package `plotrix`:
+
+```bash
+module load R/3.10.
+> install.packages("plotrix")
+```
+
+**plotting lengths, enacting mirdeep2, enacting seqBuster, mapping to genome and calculating intensities**
+do not raise any errors.
+
+**breaking down annotation basic**, same `plotrix` error.
+
+**enacting exogen**
+
+```
+Can't locate Statistics/R.pm in @INC (@INC contains: /sw/apps/bioinfo/mirdeep2/2.0.0.5/milou/bin/lib/x86_64-linux-thread-multi /sw/apps/bioinfo/mirdeep2/2.0.0.5/milou/bin/lib /home/guilc/opt/perl/lib/perl5/x86_64-linux-thread-multi /home/guilc/opt/perl/lib/perl5 /home/guilc/opt/perl/lib/perl5/x86_64-linux-thread-multi /home/guilc/opt/perl/lib/perl5 /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /gulo/proj_nobackup/b2013064/BB2490_KTH_miRNA_project/smartar/EXOGEN/exogen_plot_v1.pl line 7.
+```
+
+Installed `cpanm Statistics::R`, should solve the problem. 
+
+So basically the steps that have failed have been: Controlling contaminants, breaking down
+annotation analysis and enacting exogen. 
+
+Wil try to re-run the pipeline only executing these steps, i.e excluding all the
+others. Modified `run_smartar.sh` to run the pipeline with the following parameters:
+`perl $2 config.txt -s -t -u -v -j -k -m -n -o -p -q -r -s -t -u`, testing on 
+project 1 now. 
+
+```bash
+sbatch -J SMARTAR_A.Simon_14_01 -o ../results/$p/SMARTAR_p1.out -e ../results/$p/SMARTAR_p1.err run_smartar.sh p1 $SMARTAT_PATH
+```
+
+(Execution time one day)
+
 ### 2015-03-12
 
 SMARTAR miRNA pipeline workflow:
