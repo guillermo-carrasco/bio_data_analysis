@@ -10,6 +10,10 @@ I have to remove the directories: `progress, contamination, breakdown_basic, sum
 - enacting genome is working as well, but getting this error: `(in cleanup) Internal error: could not get STATE from IPC::Run`
 (this is not a real problem, basically a lot of intermediate files will remain there)
 
+**EXECUTION OK!** will launch jobs for all other projects, after removing all other directories.
+
+Now, to wait again...
+
 ### 2015-03-13
 
 Checking the pipeline logs we've seen lots of errors, the first one of them is a
@@ -40,15 +44,15 @@ do not raise any errors.
 Can't locate Statistics/R.pm in @INC (@INC contains: /sw/apps/bioinfo/mirdeep2/2.0.0.5/milou/bin/lib/x86_64-linux-thread-multi /sw/apps/bioinfo/mirdeep2/2.0.0.5/milou/bin/lib /home/guilc/opt/perl/lib/perl5/x86_64-linux-thread-multi /home/guilc/opt/perl/lib/perl5 /home/guilc/opt/perl/lib/perl5/x86_64-linux-thread-multi /home/guilc/opt/perl/lib/perl5 /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /gulo/proj_nobackup/b2013064/BB2490_KTH_miRNA_project/smartar/EXOGEN/exogen_plot_v1.pl line 7.
 ```
 
-Installed `cpanm Statistics::R`, should solve the problem. 
+Installed `cpanm Statistics::R`, should solve the problem.
 
 So basically the steps that have failed have been: Controlling contaminants, breaking down
-annotation analysis and enacting exogen. 
+annotation analysis and enacting exogen.
 
 Wil try to re-run the pipeline only executing these steps, i.e excluding all the
 others. Modified `run_smartar.sh` to run the pipeline with the following parameters:
-`perl $2 config.txt -s -t -u -v -j -k -m -n -o -p -q -r -s -t -u`, testing on 
-project 1 now. 
+`perl $2 config.txt -s -t -u -v -j -k -m -n -o -p -q -r -s -t -u`, testing on
+project 1 now.
 
 ```bash
 sbatch -J SMARTAR_A.Simon_14_01 -o ../results/$p/SMARTAR_p1.out -e ../results/$p/SMARTAR_p1.err run_smartar.sh p1 $SMARTAT_PATH
