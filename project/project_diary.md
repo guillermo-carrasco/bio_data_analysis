@@ -1,5 +1,15 @@
 # Project diary
 
+### 2015-03-14
+
+The pipeline tries to create the directories necessary for the analysis, and if they
+already exist (which is the case), it crashes instead of overwriting the results. So
+I have to remove the directories: `progress, contamination, breakdown_basic, summary` and `exogen`.
+
+- Controlling contaminations step worked!
+- enacting genome is working as well, but getting this error: `(in cleanup) Internal error: could not get STATE from IPC::Run`
+(this is not a real problem, basically a lot of intermediate files will remain there)
+
 ### 2015-03-13
 
 Checking the pipeline logs we've seen lots of errors, the first one of them is a
