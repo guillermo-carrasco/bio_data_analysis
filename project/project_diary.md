@@ -1,5 +1,9 @@
 # Project diary
 
+### 2015-03-15
+
+Jobs for 5/6 projects have finished, so we can start taking a look to those projects while the other one finishes. Copying the results locally for further analysis with `rsync -rvR --exclude="*.fa" --exclude="*.bwt" --exclude="*.ebwt" --exclude="*.fastq" --exclude="intensities" --exclude="*.arf" --exclude="*.tmp" --exclude=".bed" --exclude="*.tmp2" --exclude="*fa*" --exclude="*.fq" --exclude="tmp" --exclude="pre-processing" --exclude="*.converted" guilc@milou-b.uppmax.uu.se:/proj/b2013064/nobackup/BB2490_KTH_miRNA_project/data/[A-Z].* .`
+
 ### 2015-03-14
 
 The pipeline tries to create the directories necessary for the analysis, and if they
