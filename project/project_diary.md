@@ -12,6 +12,44 @@ pipeline analyses _per sample_, so it shouldn't take more than 5h per job).
 
 I will transfer the data to our project directory on nestor and try to launch the jobs.
 
+Data is there. Now what I have done is written this short bash script that will run
+cutadapt and FastQC on each sample:
+
+```bash
+#!/bin/bash
+
+#SBATCH -p core -n 8
+#SBATCH -t 00:30:00
+#SBATCH -A a2010002
+
+module load bioinfo-tools
+module load cutadapt
+module load FastQC
+
+PROJECT_HOME="/proj/a2010002/nobackup/BB2490_KTH_miRNA_project/src/bio_data_analysis/project"
+DATA_DIR="/proj/a2010002/nobackup/BB2490_KTH_miRNA_project/data"
+RESULTS_DIR=${PROJECT_HOME}/results/$(date +%Y-%m-%d)
+
+# Prepare directories
+project=$1
+sample=$2
+mkdir -p ${RESULTS_DIR}/${project}/${sample%.*}/FastQC
+
+# Run cutadapt
+cutadapt -f fastq -a TGGAATTCTCGGGTGCCAAGG -q 10 -O 3 -m 18 -o ${RESULTS_DIR}/${project}/${sample%.*}/${sample%.*}_trimmed.fastq  ${DATA
+_DIR}/${project}/${sample} 2> ${RESULTS_DIR}/${project}/${sample%.*}/${sample%.*}_cutadapt.out
+
+# Run FastQC
+fastqc -o ${RESULTS_DIR}/${project}/${sample%.*}/FastQC  ${RESULTS_DIR}/${project}/${sample%.*}_trimmed.fastq
+```
+
+And called it like this, on each project directory
+
+```bash
+for sample in `ls *fastq*`; do sbatch -J $sample cut_and_fas.sh <project_name> $sample; done
+```
+
+
 ### 2015-03-16
 
 I’ve been talking with Phil this morning, and we’ve concluded that, given the very short time we have, we have to focus on what we have.
