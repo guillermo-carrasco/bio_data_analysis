@@ -1,5 +1,40 @@
 # Project diary
 
+### 2015-03-17
+
+**UPPMAX is totally unaccessible...**
+
+### 2015-03-16
+
+I’ve been talking with Phil this morning, and we’ve concluded that, given the very short time we have, we have to focus on what we have.
+
+* The heatmap
+* Contamination screening
+
+**The heatmap**
+There are a couple of things that need to be fixed for the heatmap, but specially
+the color scale, it is pretty difficult to appreciate any difference with green
+taking most of the scale. Also, usually more density implies a darker color.
+What about a white to red gradual scale?
+
+Also, I’m afraid that we don’t trust that much fastqx and how Marc is filtering the reads.
+It is basically discarding everything longer than 35bp, which doesn’t help us much
+on knowing how our data looks like. We have bad libraries and we know it, so a good
+point would be to try to understand how bad they are, and conclude with something like:
+We accept all libraries which % of reads longer than 25bp is < X.
+
+Now what we should do is go back to where we started: cutadapt + FastQC.
+I’ve already launched jobs in Uppmax for all our samples, but the estimated starting
+ dates scare me… if by tomorrow none of them have started I’ll see what I can do.
+ I don’t discard submitting a couple of jobs to Amazon or similar if the data transfer
+ prices allows me to do it.
+
+**Contamination screening**
+This is quite useful, actually if you take a look at the contamination results for
+peoject1 you’ll see that most of the reads are mapped to birds/reptiles. This is actually
+because the samples are from non-human data. So this is expected, but is a quick and
+simple check to avoid confusions.
+
 ### 2015-03-15
 
 Jobs for 5/6 projects have finished, so we can start taking a look to those projects while the other one finishes. Copying the results locally for further analysis with `rsync -rvR --exclude="*.fa" --exclude="*.bwt" --exclude="*.ebwt" --exclude="*.fastq" --exclude="intensities" --exclude="*.arf" --exclude="*.tmp" --exclude=".bed" --exclude="*.tmp2" --exclude="*fa*" --exclude="*.fq" --exclude="tmp" --exclude="pre-processing" --exclude="*.converted" guilc@milou-b.uppmax.uu.se:/proj/b2013064/nobackup/BB2490_KTH_miRNA_project/data/[A-Z].* .`
