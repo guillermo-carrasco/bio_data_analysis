@@ -4,6 +4,14 @@
 
 **UPPMAX is totally unaccessible...**
 
+Uppmax has had a major hardware issue and has been unabailable all the morning.
+I have lots of jobs in queue which estmated time of start is N/A. In production we
+have a dedicated cluster called Nestor that is going on maintenance tomorrow, but
+with luck, if I submit short jobs with _our_ pipeline, it will execute them (our
+pipeline analyses _per sample_, so it shouldn't take more than 5h per job).
+
+I will transfer the data to our project directory on nestor and try to launch the jobs.
+
 ### 2015-03-16
 
 I’ve been talking with Phil this morning, and we’ve concluded that, given the very short time we have, we have to focus on what we have.
