@@ -1,5 +1,14 @@
 # Project diary
 
+### 2015-03-18
+
+We've got all the results for all samples and all projects. The only inconvenient is
+that I didn't merge the sample files that were sequenced on different lanes, so I
+will have to do that aggregation manually. I will construct for Sofia a length file
+so that she or Yim can generate the heatmap.
+
+
+
 ### 2015-03-17
 
 **UPPMAX is totally unaccessible...**
