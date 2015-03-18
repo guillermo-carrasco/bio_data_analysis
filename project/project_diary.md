@@ -7,6 +7,21 @@ that I didn't merge the sample files that were sequenced on different lanes, so 
 will have to do that aggregation manually. I will construct for Sofia a length file
 so that she or Yim can generate the heatmap.
 
+Exploring a little bit [SeqMonk](http://www.bioinformatics.babraham.ac.uk/projects/seqmonk/) as well.
+
+![SeqMonk](https://raw.githubusercontent.com/guillermo-carrasco/bio_data_analysis/master/project/results/2015-03-18/seqmonk.png)
+
+That could be a good addition to the poster: Other RNAs contaminations.
+
+**Extract read length counts from all samples**
+In order to create a heapmap, we need a file per sample that have two collumns: length
+and read count. To do that, I will use FastQC output, concretely the section
+Sequence Length Distribution in the file `fastqc_data.txt`.
+
+Steps followed:
+
+1. Extracted all FastQC results: ```find . -name \*.zip -exec sh -c 'tar xf $1 -C `dirname $1`' _ {} \;```
+2. Create a script to extract that read count. Check `/bin/count_reads.py`
 
 
 ### 2015-03-17
