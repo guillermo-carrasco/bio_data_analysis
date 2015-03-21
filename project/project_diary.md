@@ -1,5 +1,33 @@
 # Project diary
 
+### 2015-03-21
+
+#### Final notes about the project
+
+At the end, the project has been a success. Even if we have not been able to reach
+our initial aim (determining thresholds for automatic QC pass/fail), we have all
+learned a lot.
+
+On my side, I have learnt about miRNA and other kinds of small RNAs and why its
+of interest of study. On Sofia and Yim side, besides that they have also learned
+how to use and run different bioifnormatics tools.
+
+As commented in the poster session, next steps for this project could be:
+
+* Using the results form the lenght distribution tables, and with the help of the
+heatmaps, try to determine a tendency on the length distribution of miRNA experiments,
+with the objective of being able to automatically decide if the sample is good or bad.
+
+* Another possible objective wold be to remove everything that is not of interest for study
+automatically: too short/long reads, bad quality reads, known non miRNA reads, etc.
+
+#### Poster presentation
+
+The final version of the poster can be found [here](https://github.com/guillermo-carrasco/bio_data_analysis/blob/master/project/doc/presentations/miRNA_poster_FINAL.pdf).
+
+The feeling after and during the poster presentation was good. People was asquing
+sensible questions  and were genuinely interested in the answers. 
+
 ### 2015-03-18
 
 We've got all the results for all samples and all projects. The only inconvenient is
